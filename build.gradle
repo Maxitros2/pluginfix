@@ -1,0 +1,44 @@
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:5.1.0'
+    }
+}
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'com.github.johnrengelman.shadow'
+    group 'me.maxiros'
+    version '1.0-SNAPSHOT'
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+    repositories {
+        mavenCentral()
+
+        maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
+        maven { url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
+        maven { url = 'https://repo.codemc.io/repository/nms/' }
+        maven { url "https://repo.dmulloy2.net/repository/public/" }
+        maven {
+            name "essentialsx"
+            url "https://ci.ender.zone/plugin/repository/everything/"
+        }
+        maven {
+            name "papermc"
+            url "https://papermc.io/repo/repository/maven-public/"
+        }
+        flatDir {
+            dirs 'libs'
+        }
+    }
+    dependencies {
+        compileOnly 'net.ess3:EssentialsX:2.17.2'
+        testCompile group: 'junit', name: 'junit', version: '4.12'
+        compileOnly 'com.destroystokyo.paper:paper-api:1.12.2-R0.1-SNAPSHOT'
+        compileOnly name: 'BDApi-1.0-SNAPSHOT-all'
+        compileOnly group: "com.comphenix.protocol", name: "ProtocolLib", version: "4.6.0";
+    }
+}

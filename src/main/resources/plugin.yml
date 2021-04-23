@@ -1,0 +1,5 @@
+name: FixPlugin
+main: me.maxitros.fix.FixPlugin
+version: 1.0
+author: Maxitros
+softdepend: [DBApi, EssentialsX]
